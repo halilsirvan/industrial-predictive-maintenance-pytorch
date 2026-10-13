@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "Industrial Predictive Maintenance with PyTorch"
+message: "If you use this portfolio project, please cite it using these metadata."
+type: software
+authors:
+  - family-names: "Sirvan"
+    given-names: "Halil"
+year: 2026
+license: MIT
+version: "1.0.0"
+date-released: 2026-10-13
+repository-code: "https://github.com/halilsirvan/industrial-predictive-maintenance-pytorch"
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Sirvan"
+      given-names: "Halil"
+  title: "Industrial Predictive Maintenance with PyTorch"
+  year: 2026
+
