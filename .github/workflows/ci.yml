@@ -1,0 +1,47 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install CPU PyTorch and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Smoke-test saved model
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from src.inference import FailurePredictor
+
+          predictor = FailurePredictor("artifacts")
+          sample = pd.DataFrame([{
+              "Type": "M",
+              "Air temperature [K]": 300.0,
+              "Process temperature [K]": 310.0,
+              "Rotational speed [rpm]": 1500,
+              "Torque [Nm]": 40.0,
+              "Tool wear [min]": 100,
+          }])
+          result = predictor.predict(sample)
+          assert 0.0 <= result.loc[0, "failure_probability"] <= 1.0
+          PY
+
