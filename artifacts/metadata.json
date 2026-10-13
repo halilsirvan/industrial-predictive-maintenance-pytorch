@@ -1,0 +1,36 @@
+{
+  "threshold": 0.2735852689847334,
+  "feature_names": [
+    "Air temperature [K]",
+    "Process temperature [K]",
+    "Rotational speed [rpm]",
+    "Torque [Nm]",
+    "Tool wear [min]",
+    "Temperature gap [K]",
+    "Mechanical power [W]",
+    "Strain proxy [Nm min]",
+    "Type_H",
+    "Type_L",
+    "Type_M"
+  ],
+  "metrics": {
+    "roc_auc": 0.9737479532875952,
+    "pr_auc": 0.766962162741995,
+    "brier_score": 0.01507341693998093,
+    "threshold": 0.2735852689847334,
+    "precision": 0.6176470588235294,
+    "recall": 0.8235294117647058,
+    "f1": 0.7058823529411765,
+    "true_negatives": 1423,
+    "false_positives": 26,
+    "false_negatives": 9,
+    "true_positives": 42,
+    "dataset_rows": 10000,
+    "test_rows": 1500,
+    "test_failures": 51,
+    "failure_prevalence": 0.0339,
+    "epochs_trained": 120,
+    "validation_pr_auc_best": 0.7095606064064193,
+    "decision_rule": "Threshold selected on validation data to maximize failure-class F1."
+  }
+}
